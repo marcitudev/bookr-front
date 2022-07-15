@@ -1,12 +1,13 @@
 .container {
   height: 87vh;
-  background-color: rgb(243, 243, 243);
 }
 
-.mat-sidenav {
-  color: white;
+.sidenav {
   width: fit-content;
-  background-color: rgb(175, 57, 146);
+}
+
+.sidenav a{
+  color: rgb(58, 58, 58);
 }
 
 i {
