@@ -14,10 +14,28 @@
   font-weight: 500;
 }
 
+.add-button{
+  color: white;
+  margin-bottom: 1rem;
+}
+
 .table {
   width: 100%;
 }
 
 .table th, td {
   text-align: center;
+}
+
+.primary-color-icon{
+  color: rgb(58, 58, 58);
+}
+
+.delete{
+  color: rgb(252, 46, 46);
+  margin-left: 0.8rem;
+}
+
+.mat-header{
+  width: 5rem;
 }
