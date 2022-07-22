@@ -4,17 +4,17 @@ import { Category } from '../category.model';
 import { CategoryService } from '../category.service';
 
 @Component({
-  selector: 'app-category-delete',
-  templateUrl: './category-delete.component.html',
-  styleUrls: ['./category-delete.component.scss']
+  selector: 'app-category-update',
+  templateUrl: './category-update.component.html',
+  styleUrls: ['./category-update.component.scss']
 })
-export class CategoryDeleteComponent implements OnInit {
+export class CategoryUpdateComponent implements OnInit {
 
   category: Category = {
     id: '',
     name: '',
     description: ''
-  };
+  }
 
   constructor(private service: CategoryService,
               private routerActive: ActivatedRoute,
@@ -28,23 +28,25 @@ export class CategoryDeleteComponent implements OnInit {
   findById(id: String): void{
     this.service.findById(id).subscribe({
       next: (response) => this.category = response,
-      error: (error) => {
-        this.service.message('Category not found!');
+      error: (err) => {
+        this.service.message("Category not found!");
         this.back();
       }
     })
   }
 
-  delete(): void{
-    this.service.delete(this.category.id!).subscribe({
+  update(): void{
+    this.service.update(this.category).subscribe({
       next: (response) => {
-        this.service.message('Category deleted successfully!');
-        this.router.navigateByUrl("/categories");
+          this.service.message('Category updated successfully!');
+          this.router.navigateByUrl("/categories");
       },
-      error: (err) => {
-        this.service.message(err.error.error);   
+      error: (error) => {
+        error.error.messageErrors.map((value: any) => {
+          this.service.message(value.message); 
+        })     
       }
-    });
+    })
   }
 
   back(): void{
