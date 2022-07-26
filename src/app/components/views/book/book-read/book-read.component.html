@@ -17,10 +17,10 @@
         <td mat-cell *matCellDef="let element">{{ element.title }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="inform">
-        <th mat-header-cell *matHeaderCellDef>Inform</th>
+      <ng-container matColumnDef="read">
+        <th mat-header-cell *matHeaderCellDef>Read</th>
         <td mat-cell *matCellDef="let element">
-          <a class="primary-color-icon" href="#">
+          <a class="primary-color-icon" routerLink="{{ element.id }}">
             <i class="material-icons">remove_red_eye</i>
           </a>
         </td>

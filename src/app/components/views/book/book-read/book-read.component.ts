@@ -11,7 +11,7 @@ import { BookService } from '../book.service';
 export class BookReadComponent implements OnInit {
 
   books: Book[] = [];
-  displayedColumns: string[] = ['id', 'title', 'inform', 'actions'];
+  displayedColumns: string[] = ['id', 'title', 'read', 'actions'];
   id: String = '';
 
   constructor(private activeRouter: ActivatedRoute,

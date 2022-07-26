@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BookCreateComponent } from './components/views/book/book-create/book-create.component';
 import { BookDeleteComponent } from './components/views/book/book-delete/book-delete.component';
 import { BookReadComponent } from './components/views/book/book-read/book-read.component';
+import { BookSpecificReadComponent } from './components/views/book/book-specific-read/book-specific-read.component';
 import { BookUpdateComponent } from './components/views/book/book-update/book-update.component';
 import { CategoryCreateComponent } from './components/views/category/category-create/category-create.component';
 import { CategoryDeleteComponent } from './components/views/category/category-delete/category-delete.component';
@@ -46,7 +47,11 @@ const routes: Routes = [
   {
     path: 'categories/:id/books/:id_book/delete',
     component: BookDeleteComponent
-  }
+  },
+  {
+    path: 'categories/:id/books/:id_book',
+    component: BookSpecificReadComponent
+  },
 ];
 
 @NgModule({
