@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from '../book.model';
 import { BookService } from '../book.service';
 
@@ -12,21 +12,25 @@ export class BookReadComponent implements OnInit {
 
   books: Book[] = [];
   displayedColumns: string[] = ['id', 'title', 'inform', 'actions'];
+  id: String = '';
 
-  constructor(private ActiveRouter: ActivatedRoute,
-              private service: BookService) { }
+  constructor(private activeRouter: ActivatedRoute,
+              private service: BookService,
+              private router: Router) { }
 
   ngOnInit(): void {
-    const id = this.ActiveRouter.snapshot.paramMap.get('id');
-    this.findAllByCategory(id!);
+    this.id = this.activeRouter.snapshot.paramMap.get('id')!;
+    this.findAllByCategory(this.id);
   }
 
-  findAllByCategory(id: String){
+  findAllByCategory(id: String): void{
     this.service.findAllByCategory(id).subscribe({
       next: (response) => this.books = response
     })
   }
 
-  
+  create(): void{
+    this.router.navigateByUrl(`categories/${this.id}/books/create`);
+  }
 
 }

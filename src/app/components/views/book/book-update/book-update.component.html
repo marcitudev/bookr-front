@@ -1,0 +1,29 @@
+<form>
+    <h1>Create a new book</h1>
+
+    <mat-form-field class="form">
+        <mat-label>Title</mat-label>
+        <input matInput [formControl]="title" [(ngModel)]="book.title" type="text" name="title" 
+               placeholder="Ex. Java">
+        <mat-error *ngIf="title.invalid">This field must be between 3 and 100 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Author</mat-label>
+        <input matInput [formControl]="author" [(ngModel)]="book.author" type="text" name="author" placeholder="Ex. Martin Perez"
+                  maxlength="100">
+        <mat-error *ngIf="author.invalid">This field must be between 3 and 100 characters</mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form">
+        <mat-label>Text</mat-label>
+        <textarea matInput [formControl]="text" [(ngModel)]="book.text" type="text" name="text" placeholder="Ex. Lorem Ipsum"
+                  maxlength="2000000"></textarea>
+        <mat-error *ngIf="text.invalid">This field must be between 10 and 2.000.000 characters</mat-error>
+    </mat-form-field>
+
+    <div class="buttons">
+        <button (click)="update()" [disabled]="formIsValid()" class="save" mat-flat-button>Update</button>
+        <button (click)="back()" class="cancel" mat-stroked-button>Cancel</button>
+    </div>
+</form>
